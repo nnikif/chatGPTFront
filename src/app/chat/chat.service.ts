@@ -15,4 +15,17 @@ export class ChatService {
   getChatTitles(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/chat/titles`, { withCredentials: true });
   }
+  getByChatId(chatId:string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/chat/titles/${chatId}`, { withCredentials: true });
+  }
+
+  sendMessage(role: string, content: string, chatId: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/chat/titles/${chatId}`, { role, content }, { withCredentials: true });
+  }
+
+  createChat(title: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/chat/create`, { title}, { withCredentials: true });
+  }
+
+
 }
