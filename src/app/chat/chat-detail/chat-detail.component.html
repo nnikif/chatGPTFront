@@ -1,0 +1,10 @@
+<!-- chat-detail.component.html -->
+<div class="chat-detail-container">
+  <h2>{{ chat?.title }}</h2>
+  <div *ngFor="let message of chat?.messages">
+    <div [ngClass]="{'user-message': message.role === 'user', 'assistant-message': message.role === 'assistant'}">
+      <div *ngIf="message.role === 'assistant'" [innerHTML]="renderMarkdown(message.content)"></div>
+      <div *ngIf="message.role === 'user'">{{ message.content }}</div>
+    </div>
+  </div>
+</div>
